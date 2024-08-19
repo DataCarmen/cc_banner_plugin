@@ -23,6 +23,6 @@ add_action('wp_enqueue_scripts', 'add_style_and_scripts');
 
 //Include cookie banner
 function show_cookie_banner() {
-    include plugin_dir_path(__FILE__) . 'templates/cookie-banner-template.php';
+    include plugin_dir_path(__FILE__) . 'templates/cookie_banner_template.php';
 }
 add_action('wp_footer', 'show_cookie_banner');
