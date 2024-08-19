@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Cookie consent banner plugin
+ * Plugin Name: Cookie consent management plugin
  * Plugin URI: http://carmenweb.com/
  * Description: This WP plugin insert a CC banner with consent mode v2
  * Version: 1.0
@@ -16,8 +16,8 @@ if (!defined('ABSPATH')) {
 
 // Adding style sheet and js functions
 function add_style_and_scripts() {
-    wp_enqueue_style('cc-banner-plugin-style', plugin_dir_url(__FILE__) . 'css/cc-banner-plugin.css');
-    wp_enqueue_script('cc-banner-plugin-scripts', plugin_dir_url(__FILE__) . 'js/cc-banner-plugin-scripts.js', array('jquery'), null, true);
+    wp_enqueue_style('cc-banner-plugin-style', plugin_dir_url(__FILE__) . 'css/cc_banner_style.css');
+    wp_enqueue_script('cc-banner-plugin-scripts', plugin_dir_url(__FILE__) . 'js/cc_banner_js_script.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'add_style_and_scripts');
 
