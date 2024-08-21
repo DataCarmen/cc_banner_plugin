@@ -16,7 +16,21 @@ function shouldBannerBeShown() {
         var storedData = JSON.parse(localStorage.getItem('cookieBanner'));
         // Are all cookies accepted? If so, mantain the consent (gtag and dl.push) and return false to don't show the banner
         if (storedData.acceptedAllCookies) {
+
+            //Send the consent update to GA4 and changes the gcs parameter value to indicate which kind of tracking is allowed
             gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted',
+                'functionality_storage': 'granted',
+                'personalization_storage': 'granted',
+                'security_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+            });
+
+            //Send the consent update to GTM to track it
+            dataLayer.push({
+                'event': 'cookie_consent_update',
                 'ad_storage': 'granted',
                 'analytics_storage': 'granted',
                 'functionality_storage': 'granted',
@@ -67,6 +81,7 @@ ACCEPT_BTN.onclick= function(){
         'ad_user_data': 'granted',
         'ad_personalization': 'granted'
     });
+
     //Send the consent update to GTM to track it
     dataLayer.push({
         'event': 'cookie_consent_update',
@@ -92,8 +107,9 @@ REJECT_BTN.onclick = function(){
     var storedData = {
         lastSeen: today
     };
+
     //Send the consent update to GA4 and mantaint/change the gcs parameter value to indicate that tracking is not allowed
-    gtag('consent', 'default', {
+    gtag('consent', 'update', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
